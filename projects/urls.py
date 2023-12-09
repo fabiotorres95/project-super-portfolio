@@ -8,10 +8,10 @@ from .views import (
 )
 
 router = routers.DefaultRouter()
-router.register('profiles', ProfileViewSet)
-router.register('projects', ProjectViewSet)
-router.register('certifying-institutions', CertifyingInstitutionViewSet)
-router.register('certificates', CertificateViewSet)
+router.register(r'profiles', ProfileViewSet)
+router.register(r'projects', ProjectViewSet)
+router.register(r'certifying-institutions', CertifyingInstitutionViewSet)
+router.register(r'certificates', CertificateViewSet)
 
 urlpatterns = [
     path('', include(router.urls))
