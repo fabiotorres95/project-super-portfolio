@@ -21,7 +21,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         if request.method == 'GET':
-            profile_id = self.kwargs['id']
+            profile_id = self.kwargs['pk']
             profile = Profile.objects.get(id=profile_id)
             return render(
                 request,
