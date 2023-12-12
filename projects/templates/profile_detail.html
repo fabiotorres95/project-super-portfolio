@@ -7,20 +7,19 @@
 </head>
 <body>
     <p>{{ profile.name }}</p>
-    <p>{{ profile.github }}</p>
-    <p>{{ profile.linkedin }}</p>
+    <a href="{{ profile.github }}">{{ profile.github }}</a>
+    <a href="{{ profile.linkedin }}">{{ profile.linkedin }}</a>
     <p>{{ profile.bio }}</p>
     {% for project in projects%}
-        {% for certificate in project.certificates %}
-            <p>{{ certificate.name }}</p>
-            <p>{{ certificate.certifyting_institution }}</p>
-            <p>{{ certificate.timestamp }}</p>
-        {% endfor %}
         <p>{{ project.name }}</p>
         <p>{{ project.description }}</p>
-        <p>{{ project.github_url }}</p>
+        <a href="{{ project.github_url }}">{{ project.github_url }}</a>
         <p>{{ project.keyword }}</p>
         <p>{{ project.key_skill }}</p>
+        {% for certificate in certificates %}
+            <p>{{ certificate.name }}</p>
+            <p>{{ certificate.certifyting_institution }}</p>
+        {% endfor %}
     {% endfor %}
     <p>{{ profile.created_at }}</p>
 </body>
