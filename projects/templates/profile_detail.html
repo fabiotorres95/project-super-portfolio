@@ -10,5 +10,18 @@
     <p>{{ profile.github }}</p>
     <p>{{ profile.linkedin }}</p>
     <p>{{ profile.bio }}</p>
+    {% for project in projects%}
+        {% for certificate in project.certificates %}
+            <p>{{ certificate.name }}</p>
+            <p>{{ certificate.certifyting_institution }}</p>
+            <p>{{ certificate.timestamp }}</p>
+        {% endfor %}
+        <p>{{ project.name }}</p>
+        <p>{{ project.description }}</p>
+        <p>{{ project.github_url }}</p>
+        <p>{{ project.keyword }}</p>
+        <p>{{ project.key_skill }}</p>
+    {% endfor %}
+    <p>{{ profile.created_at }}</p>
 </body>
 </html>

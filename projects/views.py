@@ -23,10 +23,14 @@ class ProfileViewSet(viewsets.ModelViewSet):
         if request.method == 'GET':
             profile_id = self.kwargs['pk']
             profile = Profile.objects.get(id=profile_id)
+            projects = Project.objects.filter(profile=profile)
+            certificates = Certificate.objects.filter(profiles=profile)
             return render(
                 request,
                 'profile_detail.html',
-                {'profile': profile}
+                {'profile': profile,
+                 'projects': projects,
+                 'certificates': certificates}
             )
         return super().retrieve(request, *args, **kwargs)
 
