@@ -15,24 +15,19 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class CertificateSerializer(serializers.ModelSerializer):
-    # certificates = serializers.ModelSerializer(many=True)
-
     class Meta:
         model = Certificate
         fields = '__all__'
 
-    # def create(self, validated_data):
-    #     certificate_data = validated_data.pop('certificate')
-    #     certifying_institution = CertifyingInstitution.objects.create(
-    #         **validated_data)
-    #     for certificate in certificate_data:
-    #         Certificate.objects.create(
-    #             certifying_institution=certifying_institution, **certificate)
-    #     return certifying_institution
+
+class NestedCertificateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Certificate
+        fields = ['id', 'name', 'profiles']
 
 
 class CertifyingInstitutionSerializer(serializers.ModelSerializer):
-    certificates = CertificateSerializer(many=True)
+    certificates = NestedCertificateSerializer(many=True)
 
     class Meta:
         model = CertifyingInstitution
@@ -43,6 +38,8 @@ class CertifyingInstitutionSerializer(serializers.ModelSerializer):
         certifying_institution = CertifyingInstitution.objects.create(
             **validated_data)
         for certificate in certificate_data:
-            CertificateSerializer().create(
-                **certificate)
+            CertificateSerializer().create({
+                'certifying_institution': certifying_institution,
+                **certificate
+            })
         return certifying_institution
