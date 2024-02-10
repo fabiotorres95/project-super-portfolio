@@ -8,3 +8,6 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 - quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
 - quais arquivos/pastas foram desenvolvidos pela Trybe.
 -->
+Projeto Super Portfólio - Trybe eletiva Python seção 6: "Django II"
+
+Python - projeto 6 de 6
